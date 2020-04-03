@@ -81,16 +81,16 @@ class App extends Component {
               currentPage={this.state.currentPage}
             />
             <GroupPanel
-              updateCurrentGroup={this.updateCurrentGroup}
-              currentGroup={this.state.currentGroup}
-              username={this.state.username}
-              createGroup={this.createGroup}
-              isJoinGroupList={this.state.isJoinGroupList}
-              groupList={this.state.groupList}
-              onAddItem={this.onAddItem}
-              passRefUpward={this.getRefsFromChild}
-              updateIsJoinGroupList={this.updateIsJoinGroupList}
-              SocketEmit={this.SocketEmit}
+              // updateCurrentGroup={this.updateCurrentGroup}
+              // currentGroup={this.state.currentGroup}
+              // username={this.state.username}
+              // createGroup={this.createGroup}
+              // isJoinGroupList={this.state.isJoinGroupList}
+              // groupList={this.state.groupList}
+              // onAddItem={this.onAddItem}
+              // passRefUpward={this.getRefsFromChild}
+              // updateIsJoinGroupList={this.updateIsJoinGroupList}
+              // SocketEmit={this.SocketEmit}
             />
             <ChatPanel
               username={this.state.username}
