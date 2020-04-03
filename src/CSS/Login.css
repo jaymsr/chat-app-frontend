@@ -1,29 +1,33 @@
 .Login-Page {
     text-align: center;
-    background-color: #ffffff;
+    /* background-color: #ffffff; */
+    background:linear-gradient(rgba(47, 77, 245, 0.5), transparent);
+    background-color: rgb(194, 229, 238);
     height: 100vh;
   }
   
   .Field-Container {
     font-family: "Baloo Chettan", cursive;
     padding: 25px;
-    width: 400px;
+    width: 600px;
     height: 40vh;
-    border: #000000 solid 2px;
-    border-radius: 1rem;
-    background-color: #999999;
+    border: #f3f8e8 solid 1px;
+    /* border-radius: 1rem; */
+    background:linear-gradient(rgba(152, 188, 223, 0.856), transparent);
+    background-color: #ffffff;
     margin-top: 30vh;
     display: inline-block;
     text-align: center;
   }
   
   .enterText {
-    margin-top: 10px;
+    margin-top: 30px;
   }
   
   .blankAlert {
     font-family: "Quicksan";
     text-align: left;
     color: red;
+    margin-top: 1vh;
   }
   
