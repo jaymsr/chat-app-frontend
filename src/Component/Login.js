@@ -32,6 +32,13 @@ class Login extends Component {
               onChange={e => {
                 this.props.updateUsername(e.target.value);
               }}
+              onKeyPress={e => {
+                if (e.key === 'Enter' && this.props.user.trim().length > 0) {
+                  this.props.updateCurrentPage("Chat");
+                  console.log(this.props.user)
+                  this.props.SocketEmit('enter', this.props.user)
+                }
+              }}
             />
           </form>
 
