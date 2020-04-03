@@ -20,7 +20,8 @@ class Login extends Component {
     return (
       <div className="Login-Page">
         <div className="Field-Container">
-          <h1 className="enterText">Login</h1>
+          <h1 className="enterText">LOGIN</h1>
+          <h3>SiaTeemo Chat</h3>
           <br />
           <form onSubmit={this.submitHandler}>
             <input
