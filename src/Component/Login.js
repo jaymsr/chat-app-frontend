@@ -43,7 +43,8 @@ class Login extends Component {
           </form>
 
           {this.props.user.trim().length > 0 ? (
-            <br />
+            <pre className="enterSubmit"> Press ENTER to login.</pre>
+            // <br />
           ) : (
               <pre className="blankAlert"> Please enter your name.</pre>
             )}

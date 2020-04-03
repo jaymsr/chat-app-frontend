@@ -34,4 +34,11 @@
     color: red;
     margin-top: 1vh;
   }
+
+  .enterSubmit {
+    font-family: "Gill Sans", sans-serif;
+    text-align: left;
+    color: rgb(12, 136, 54);
+    margin-top: 1vh;
+  }
   
