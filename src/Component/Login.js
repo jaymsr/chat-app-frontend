@@ -20,13 +20,13 @@ class Login extends Component {
     return (
       <div className="Login-Page">
         <div className="Field-Container">
-          <h1 className="enterText">Enter Your Name</h1>
+          <h1 className="enterText">Login</h1>
           <br />
           <form onSubmit={this.submitHandler}>
             <input
               type="text"
               className="form-control"
-              placeholder="Enter name here ..."
+              placeholder="Enter your name"
               id="nameField"
               onChange={e => {
                 this.props.updateUsername(e.target.value);
@@ -37,7 +37,7 @@ class Login extends Component {
           {this.props.user.trim().length > 0 ? (
             <br />
           ) : (
-              <pre className="blankAlert"> Please fill out this field.</pre>
+              <pre className="blankAlert"> Please enter your name.</pre>
             )}
 
           <div>
