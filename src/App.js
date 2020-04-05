@@ -6,38 +6,50 @@ import GroupPanel from "./Component/GroupPanel";
 import ChatPanel from "./Component/ChatPanel";
 import NavigationBar from "./Component/NavigationBar";
 import Login from "./Component/Login";
+import openSocket from 'socket.io-client';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       page: "Login",
-      user: "",
+      username: "",
+      typeText: '',
+      allMessages :{},
+      allGroup: [],
     };
     // Socket Things --------------------------------
-    //
-    //
-    //
-    //
-    //
-    //
+    this.socket = openSocket('http://localhost:8000');
+    console.log('open socket...')
+    const me = this;
+
+    this.socket.on('all-group',function(data) {
+      me.setState({allGroup:data})
+    })
+
+    this.socket.on('all-chat',function(data) {
+      me.setState({allMessages:data})
+    })
+    
     // End Socket Things ----------------------------
+
     this.SocketEmit = this.SocketEmit.bind(this);
     this.updateUsername = this.updateUsername.bind(this);
     this.updateCurrentPage = this.updateCurrentPage.bind(this);
+    this.updateTypeText = this.updateTypeText.bind(this);
+    this.sendMassage = this.sendMassage.bind(this);
+
   }
 
   SocketEmit(event, value) {
-    console.log(value)
-    console.log('value')
-    //this.socket.emit(event,value);
+    this.socket.emit(event,value);
   }
 
   //--------------------Login-----------------------
   
   updateUsername(value) {
     this.setState({
-      user: value
+      username: value
     });
   }
   updateCurrentPage(status) {
@@ -67,10 +79,41 @@ class App extends Component {
   //
 
   //---------------------ChatPanel------------------------
-  //
-  //
-  //
-  //
+  updateTypeText(value) {
+    this.setState({
+      typeText: value
+    });
+  }
+
+  sendMassage(e) {
+    const self = this;
+    e.preventDefault();
+    var emitMessage =
+    {
+      username: this.state.username,
+      groupId: '5e89c8271c9d440000f78e42',
+      text: this.state.typeText,
+      timestamp: Date()
+    };
+
+    console.log("message");
+    console.log(emitMessage);
+    this.socket.emit('send-message',emitMessage);
+    //ReactDOM.findDOMNode(this.state.myRequestedRefsChat.msg).value = "";
+    //----------------------------------------------
+    // var message =
+    // {
+    //   username: this.state.username,
+    //   text: this.state.typeText,
+    //   timeStamp: Date(),
+    // }
+    // self.state.allMessages['5e89c8271c9d440000f78e42'].push(message)
+
+    //----------------------------------------------
+
+
+    this.updateTypeText("");
+  }
 
 
 
@@ -81,7 +124,7 @@ class App extends Component {
           <div>
             <NavigationBar
               updateUsername={this.updateUsername}
-              username={this.state.username}
+              user={this.state.user}
               currentGroup={this.state.currentGroup}
               updateCurrentPage={this.updateCurrentPage}
               currentPage={this.state.currentPage}
@@ -100,14 +143,10 @@ class App extends Component {
             />
             <ChatPanel
               username={this.state.username}
-              currentGroup={this.state.currentGroup}
-              isJoinGroupList={this.state.isJoinGroupList}
-              groupList={this.state.groupList}
-              allChats={this.state.allChats}
               typeText={this.state.typeText}
-              submitMessage={this.submitMessage}
-              userInput={this.userInput}
-              passRefUpwardChat={this.getRefsFromChildChat}
+              updateTypeText={this.updateTypeText}
+              sendMassage={this.sendMassage}
+              allMessages={this.state.allMessages}
             />
           </div>
         ) : this.state.page === "Login" ? (
@@ -115,7 +154,7 @@ class App extends Component {
             <Login
               updateUsername={this.updateUsername}
               updateCurrentPage={this.updateCurrentPage}
-              user={this.state.user}
+              username={this.state.username}
               page={this.state.page}
               SocketEmit={this.SocketEmit}
             />

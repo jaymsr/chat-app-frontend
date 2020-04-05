@@ -8,7 +8,7 @@ class Login extends Component {
     this.submitHandler = this.submitHandler.bind(this);
   }
   submitHandler(e) {
-    if (this.props.username.trim().length > 0)
+    if (this.props.user.trim().length > 0)
       this.props.updateCurrentPage("Chat");
     else return false;
   }
@@ -33,16 +33,16 @@ class Login extends Component {
                 this.props.updateUsername(e.target.value);
               }}
               onKeyPress={e => {
-                if (e.key === 'Enter' && this.props.user.trim().length > 0) {
+                if (e.key === 'Enter' && this.props.username.trim().length > 0) {
                   this.props.updateCurrentPage("Chat");
-                  console.log(this.props.user)
-                  this.props.SocketEmit('enter', this.props.user)
+                  console.log(this.props.username)
+                  this.props.SocketEmit('enter', this.props.username)
                 }
               }}
             />
           </form>
 
-          {this.props.user.trim().length > 0 ? (
+          {this.props.username.trim().length > 0 ? (
             <pre className="enterSubmit"> Press ENTER to login.</pre>
             // <br />
           ) : (
@@ -52,13 +52,13 @@ class Login extends Component {
           <div>
             <NavLink to="/ChatRoom">
               <button
-                disabled={!this.props.user.trim().length > 0}
+                disabled={!this.props.username.trim().length > 0}
                 className="btn btn-primary"
                 type="submit"
                 onClick={e => {
                   this.props.updateCurrentPage("Chat");
-                  console.log(this.props.user)
-                  this.props.SocketEmit('enter', this.props.user)
+                  console.log(this.props.username)
+                  this.props.SocketEmit('new-user', this.props.username)
                 }}
               >
                 Enter
