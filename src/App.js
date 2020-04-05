@@ -47,11 +47,17 @@ class App extends Component {
   }
 
   //------------------GroupList---------------------
-  //
-  //
-  //
-  //
-  //
+  onAddItem() {
+    this.socket.emit('new-group',{username:this.state.user, groupname:this.state.myRequestedRefs.groupName.value})
+    this.state.myRequestedRefs.groupForm.reset();
+  }
+  createGroup(e) {
+    e.preventDefault();
+    var group = this.state.myRequestedRefs.groupName.value;
+    if (typeof group === "string" && group.length > 0) {
+      this.onAddItem();
+    }
+  }
 
   //------ north add ja -----//
   //

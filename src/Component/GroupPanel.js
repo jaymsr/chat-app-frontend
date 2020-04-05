@@ -4,6 +4,7 @@ import "../CSS/GroupPanel.css";
 class GroupList extends Component {
 
   componentDidMount() {
+    this.props.passRefUpward(this.refs)
   }
 
   render() {
@@ -11,7 +12,7 @@ class GroupList extends Component {
       <div className="groupPanel-container">
         <form
           className="form-inline"
-          // ref="groupForm"
+          ref="groupForm"
           id="formGropPanel"
         >
           <div className="form-group">
@@ -20,7 +21,7 @@ class GroupList extends Component {
                 type="text"
                 id="groupItem"
                 placeholder="Type Group Name Here"
-                // ref="groupName"
+                ref="groupName"
                 className="form-control"
                 class="text-center"
               />
