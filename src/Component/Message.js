@@ -11,7 +11,7 @@ const Message = ({ message, username }) => (
             </div>
         </div>
         <div className={`time ${username === message.username ? "right" : "left"}`}>
-            9:00 Am
+            {message.timestamp}
         </div>
     </div>
 );

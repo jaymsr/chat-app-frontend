@@ -29,6 +29,7 @@ class Login extends Component {
               className="form-control"
               placeholder="Enter your name"
               id="nameField"
+              autocomplete="off"
               onChange={e => {
                 this.props.updateUsername(e.target.value);
               }}

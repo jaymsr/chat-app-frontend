@@ -15,7 +15,7 @@ class App extends Component {
       page: "Login",
       username: "",
       typeText: '',
-      allMessages :{},
+      allMessages: {},
       allGroup: [],
     };
     // Socket Things --------------------------------
@@ -23,14 +23,16 @@ class App extends Component {
     console.log('open socket...')
     const me = this;
 
-    this.socket.on('all-group',function(data) {
-      me.setState({allGroup:data})
+    this.socket.on('all-group', function (data) {
+      me.setState({ allGroup: data })
     })
 
-    this.socket.on('all-chat',function(data) {
-      me.setState({allMessages:data})
+    this.socket.on('all-chat', function (data) {
+      me.setState({ allMessages: data })
+      console.log('all-chat...')
+      console.log(me.state)
     })
-    
+
     // End Socket Things ----------------------------
 
     this.SocketEmit = this.SocketEmit.bind(this);
@@ -42,11 +44,11 @@ class App extends Component {
   }
 
   SocketEmit(event, value) {
-    this.socket.emit(event,value);
+    this.socket.emit(event, value);
   }
 
   //--------------------Login-----------------------
-  
+
   updateUsername(value) {
     this.setState({
       username: value
@@ -82,17 +84,20 @@ class App extends Component {
   sendMassage(e) {
     const self = this;
     e.preventDefault();
+    let current_datetime = new Date()
+    let formatted_date = current_datetime.getFullYear() + "/" + (current_datetime.getMonth() + 1) + "/" + current_datetime.getDate() + " " + current_datetime.getHours() + ":" + current_datetime.getMinutes()
+
     var emitMessage =
     {
       username: this.state.username,
       groupId: '5e89c8271c9d440000f78e42',
       text: this.state.typeText,
-      timestamp: Date()
+      timestamp: formatted_date
     };
 
     console.log("message");
     console.log(emitMessage);
-    this.socket.emit('send-message',emitMessage);
+    this.socket.emit('send-message', emitMessage);
     //ReactDOM.findDOMNode(this.state.myRequestedRefsChat.msg).value = "";
     //----------------------------------------------
     // var message =
@@ -110,7 +115,6 @@ class App extends Component {
   }
 
 
-
   render() {
     return (
       <div>
@@ -124,16 +128,16 @@ class App extends Component {
               currentPage={this.state.currentPage}
             />
             <GroupPanel
-              // updateCurrentGroup={this.updateCurrentGroup}
-              // currentGroup={this.state.currentGroup}
-              // username={this.state.username}
-              // createGroup={this.createGroup}
-              // isJoinGroupList={this.state.isJoinGroupList}
-              // groupList={this.state.groupList}
-              // onAddItem={this.onAddItem}
-              // passRefUpward={this.getRefsFromChild}
-              // updateIsJoinGroupList={this.updateIsJoinGroupList}
-              // SocketEmit={this.SocketEmit}
+            // updateCurrentGroup={this.updateCurrentGroup}
+            // currentGroup={this.state.currentGroup}
+            // username={this.state.username}
+            // createGroup={this.createGroup}
+            // isJoinGroupList={this.state.isJoinGroupList}
+            // groupList={this.state.groupList}
+            // onAddItem={this.onAddItem}
+            // passRefUpward={this.getRefsFromChild}
+            // updateIsJoinGroupList={this.updateIsJoinGroupList}
+            // SocketEmit={this.SocketEmit}
             />
             <ChatPanel
               username={this.state.username}
