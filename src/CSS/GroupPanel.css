@@ -1,6 +1,7 @@
 .groupList-container {
     width: 32%;
     float: left;
+    background-color: rgb(70, 70, 73);
   }
   
   .form-group {

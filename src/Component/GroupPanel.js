@@ -9,11 +9,11 @@ class GroupList extends Component {
   render() {
     return (
       <div className="groupList-container">
-          <h1>This is Group Panel</h1>
-          <h1>This is Group Panel</h1>
-          <h1>This is Group Panel</h1>
-          <h1>This is Group Panel</h1>
-
+          <h1 style={{color: 'white'}}>This is Group Panel</h1>
+          <h1 style={{color: 'white'}}>This is Group Panel</h1>
+          <h1 style={{color: 'white'}}>This is Group Panel</h1>
+          <h1 style={{color: 'white'}}>This is Group Panel</h1>
+          <h1 style={{color: 'white'}}>This is Group Panel</h1>
       </div>
     );
   }

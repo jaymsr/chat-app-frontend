@@ -20,11 +20,12 @@ class ChatPanel extends Component {
                     <div className="ChatRoom-container">
                         <div className="chat-container" id="scrollc">
                             <div className="chatbox-container">
-                                <h1>this is ChatPanel</h1>
-                                <h1>this is ChatPanel</h1>
-                                <h1>this is ChatPanel</h1>
-                                <h1>this is ChatPanel</h1>
-
+                                <h1 style={{color: 'white'}}>this is ChatPanel</h1>
+                                <h1 style={{color: 'white'}}>this is ChatPanel</h1>
+                                <h1 style={{color: 'white'}}>this is ChatPanel</h1>
+                                <h1 style={{color: 'white'}}>this is ChatPanel</h1>
+                                <h1 style={{color: 'white'}}>this is ChatPanel</h1>
+                                <h1 style={{color: 'white'}}>this is ChatPanel</h1>
                             </div>
                         </div>
                     </div>
