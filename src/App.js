@@ -15,7 +15,9 @@ class App extends Component {
       page: "Login",
       username: "",
       typeText: '',
-      allMessages :{},
+      currentGroup: "Not in group.",
+      isJoinGroupList: [], // [true, false, true]
+      allMessages: {},
       allGroup: [],
     };
     // Socket Things --------------------------------
@@ -23,30 +25,40 @@ class App extends Component {
     console.log('open socket...')
     const me = this;
 
-    this.socket.on('all-group',function(data) {
-      me.setState({allGroup:data})
+    this.socket.on('all-group', function (data) {
+      me.setState({ allGroup: data })
     })
 
-    this.socket.on('all-chat',function(data) {
-      me.setState({allMessages:data})
-    })
     
+    this.socket.on('join-group', function (data) {
+      me.setState({ isJoinGroupList: data })
+    })
+
+    this.socket.on('all-chat', function (data) {
+      me.setState({ allMessages: data })
+    })
+
     // End Socket Things ----------------------------
 
     this.SocketEmit = this.SocketEmit.bind(this);
+
     this.updateUsername = this.updateUsername.bind(this);
     this.updateCurrentPage = this.updateCurrentPage.bind(this);
+    this.updateCurrentGroup = this.updateCurrentGroup.bind(this);
+    this.createGroup = this.createGroup.bind(this);
     this.updateTypeText = this.updateTypeText.bind(this);
     this.sendMassage = this.sendMassage.bind(this);
+    this.getRefsFromChild = this.getRefsFromChild.bind(this);
+    this.updateIsJoinGroupList = this.updateIsJoinGroupList.bind(this);
 
   }
 
   SocketEmit(event, value) {
-    this.socket.emit(event,value);
+    this.socket.emit(event, value);
   }
 
   //--------------------Login-----------------------
-  
+
   updateUsername(value) {
     this.setState({
       username: value
@@ -59,8 +71,13 @@ class App extends Component {
   }
 
   //------------------GroupList---------------------
+  updateCurrentGroup(value) {
+    this.setState({
+      currentGroup: value
+    });
+  }
   onAddItem() {
-    this.socket.emit('new-group',{username:this.state.user, groupname:this.state.myRequestedRefs.groupName.value})
+    this.socket.emit('new-group', { username: this.state.username, groupname: this.state.myRequestedRefs.groupName.value })
     this.state.myRequestedRefs.groupForm.reset();
   }
   createGroup(e) {
@@ -70,13 +87,16 @@ class App extends Component {
       this.onAddItem();
     }
   }
+  getRefsFromChild(childRef) {
+    this.setState({
+      myRequestedRefs: childRef
+    });
+  }
 
   //------ north add ja -----//
-  //
-  //
-  //
-  //
-  //
+  updateIsJoinGroupList(newList) {
+    this.setState({ isJoinGroupList: newList });
+  }
 
   //---------------------ChatPanel------------------------
   updateTypeText(value) {
@@ -98,7 +118,7 @@ class App extends Component {
 
     console.log("message");
     console.log(emitMessage);
-    this.socket.emit('send-message',emitMessage);
+    this.socket.emit('send-message', emitMessage);
     //ReactDOM.findDOMNode(this.state.myRequestedRefsChat.msg).value = "";
     //----------------------------------------------
     // var message =
@@ -130,16 +150,16 @@ class App extends Component {
               currentPage={this.state.currentPage}
             />
             <GroupPanel
-              // updateCurrentGroup={this.updateCurrentGroup}
-              // currentGroup={this.state.currentGroup}
-              // username={this.state.username}
-              // createGroup={this.createGroup}
-              // isJoinGroupList={this.state.isJoinGroupList}
-              // groupList={this.state.groupList}
-              // onAddItem={this.onAddItem}
-              // passRefUpward={this.getRefsFromChild}
-              // updateIsJoinGroupList={this.updateIsJoinGroupList}
-              // SocketEmit={this.SocketEmit}
+              updateCurrentGroup={this.updateCurrentGroup}
+              currentGroup={this.state.currentGroup}
+              username={this.state.username}
+              createGroup={this.createGroup}
+              isJoinGroupList={this.state.isJoinGroupList}
+              allGroup={this.state.allGroup}
+              onAddItem={this.onAddItem}
+              passRefUpward={this.getRefsFromChild}
+              updateIsJoinGroupList={this.updateIsJoinGroupList}
+              SocketEmit={this.SocketEmit}
             />
             <ChatPanel
               username={this.state.username}

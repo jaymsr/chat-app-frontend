@@ -57,7 +57,7 @@ class Login extends Component {
                 type="submit"
                 onClick={e => {
                   this.props.updateCurrentPage("Chat");
-                  console.log(this.props.username)
+                  // console.log(this.props.username)
                   this.props.SocketEmit('new-user', this.props.username)
                 }}
               >
