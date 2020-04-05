@@ -19,9 +19,10 @@ class GroupList extends Component {
               <input
                 type="text"
                 id="groupItem"
-                placeholder="Type New Group Name Here"
-                ref="groupName"
+                placeholder="Type Group Name Here"
+                // ref="groupName"
                 className="form-control"
+                class="text-center"
               />
             </label>
           </div>
@@ -33,6 +34,10 @@ class GroupList extends Component {
             <i className="fas fa-plus" />
           </button>
         </form>
+        
+        <ul className="list-group">
+
+        </ul>
       </div>
     );
   }
