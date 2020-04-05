@@ -7,8 +7,7 @@ class ChatPanel extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: this.props.user,
-            allMessages: this.props.allMessages,
+            username: this.props.username,
             isLogout: false
         };
         this.renderMessage = this.renderMessage.bind(this);
@@ -17,17 +16,15 @@ class ChatPanel extends Component {
     }
 
     renderMessage() {
-        console.log('in')
-        return (
-            this.state.allMessages['groupA'].map((message, key) => {
-                console.log('rendermsg')
-                console.log(message)
-                console.log('rendermsg end')
-                return (
-                    <Message message={message} user={this.state.user} />
-                )
-            })
-        )
+        if (this.props.allMessages['5e89c8271c9d440000f78e42']) {
+            return (
+                this.props.allMessages['5e89c8271c9d440000f78e42'].map((message, key) => {
+                    return (
+                        <Message message={message} username={this.state.username} />
+                    )
+                })
+            )
+        }
     }
 
 
@@ -49,7 +46,6 @@ class ChatPanel extends Component {
                                     className="input"
                                     onSubmit={e => {
                                         this.props.sendMassage(e)
-                                        console.log('e')
                                         var sound = document.getElementById("audio");
                                         sound.play();
                                         var form = document.getElementById("input");

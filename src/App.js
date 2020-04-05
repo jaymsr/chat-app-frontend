@@ -6,26 +6,31 @@ import GroupPanel from "./Component/GroupPanel";
 import ChatPanel from "./Component/ChatPanel";
 import NavigationBar from "./Component/NavigationBar";
 import Login from "./Component/Login";
+import openSocket from 'socket.io-client';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       page: "Login",
-      user: "",
+      username: "",
       typeText: '',
-      allMessages :
-      {
-        groupA: []
-      },
+      allMessages :{},
+      allGroup: [],
     };
     // Socket Things --------------------------------
-    //
-    //
-    //
-    //
-    //
-    //
+    this.socket = openSocket('http://localhost:8000');
+    console.log('open socket...')
+    const me = this;
+
+    this.socket.on('all-group',function(data) {
+      me.setState({allGroup:data})
+    })
+
+    this.socket.on('all-chat',function(data) {
+      me.setState({allMessages:data})
+    })
+    
     // End Socket Things ----------------------------
 
     this.SocketEmit = this.SocketEmit.bind(this);
@@ -37,16 +42,14 @@ class App extends Component {
   }
 
   SocketEmit(event, value) {
-    console.log(value)
-    console.log('value')
-    //this.socket.emit(event,value);
+    this.socket.emit(event,value);
   }
 
   //--------------------Login-----------------------
   
   updateUsername(value) {
     this.setState({
-      user: value
+      username: value
     });
   }
   updateCurrentPage(status) {
@@ -79,29 +82,26 @@ class App extends Component {
   sendMassage(e) {
     const self = this;
     e.preventDefault();
-    console.log('type text')
-    console.log(this.state.typeText)
     var emitMessage =
     {
-      user: this.state.user,
-      groupName: this.state.currentGroup,
+      username: this.state.username,
+      groupId: '5e89c8271c9d440000f78e42',
       text: this.state.typeText,
-      timeStamp: Date()
+      timestamp: Date()
     };
 
     console.log("message");
-    console.log(message);
-    //this.socket.emit('sendMessage',message);
+    console.log(emitMessage);
+    this.socket.emit('send-message',emitMessage);
     //ReactDOM.findDOMNode(this.state.myRequestedRefsChat.msg).value = "";
     //----------------------------------------------
-    var message =
-    {
-      user: this.state.user,
-      text: this.state.typeText,
-      timeStamp: Date(),
-    }
-    console.log(self.state)
-    self.state.allMessages['groupA'].push(message)
+    // var message =
+    // {
+    //   username: this.state.username,
+    //   text: this.state.typeText,
+    //   timeStamp: Date(),
+    // }
+    // self.state.allMessages['5e89c8271c9d440000f78e42'].push(message)
 
     //----------------------------------------------
 
@@ -136,7 +136,7 @@ class App extends Component {
               // SocketEmit={this.SocketEmit}
             />
             <ChatPanel
-              user={this.state.user}
+              username={this.state.username}
               typeText={this.state.typeText}
               updateTypeText={this.updateTypeText}
               sendMassage={this.sendMassage}
@@ -148,7 +148,7 @@ class App extends Component {
             <Login
               updateUsername={this.updateUsername}
               updateCurrentPage={this.updateCurrentPage}
-              user={this.state.user}
+              username={this.state.username}
               page={this.state.page}
               SocketEmit={this.SocketEmit}
             />
