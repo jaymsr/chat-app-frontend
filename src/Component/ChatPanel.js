@@ -11,19 +11,20 @@ class ChatPanel extends Component {
             isLogout: false
         };
         this.renderMessage = this.renderMessage.bind(this);
+        var scrolled = false;
     }
 
-    // scrollToBottom = () => {
-    //     this.messagesEnd.scrollIntoView({ behavior: "smooth" });
-    // }
-      
-    // componentDidMount() {
-    //     this.scrollToBottom();
-    // }
-      
-    // componentDidUpdate() {
-    //     this.scrollToBottom();
-    // }
+    scrollDown() {
+        var objDiv = document.getElementById("chatInput");
+        objDiv.scrollTop = objDiv.scrollHeight;
+    }
+
+    scrollDownWithTimeOut() {
+        setTimeout(this.scrollDown, 200);
+    }
+
+    componentDidMount() {
+    }
 
     renderMessage() {
         if (this.props.allMessages['5e89c8271c9d440000f78e42']) {
@@ -37,7 +38,6 @@ class ChatPanel extends Component {
         }
     }
 
-
     render() {
         return this.state.isLogout ? (
             <App />
@@ -46,7 +46,7 @@ class ChatPanel extends Component {
                     <div className="ChatRoom-container">
                         <div className="chat-container" id="scrollc">
                             <div className="chatbox-container">
-                                <div className="group-name"> 
+                                <div className="group-name">
                                     <span class="groupname-text">
                                         Group Name
                                     </span>
@@ -54,24 +54,25 @@ class ChatPanel extends Component {
                                 <ul className="chats" id="chatInput">
                                     {this.renderMessage()}
                                 </ul>
-                                <audio id="audio" src="https://www.soundjay.com/button/sounds/button-10.mp3" autoplay="false" ></audio>
-                                {/* <div style={{ float:"left", clear: "both" }}
-                                    ref={(el) => { this.messagesEnd = el; }}>
-                                </div> */}
+                                {/* <audio id="audio" src="https://www.soundjay.com/button/sounds/button-10.mp3" autoplay="false" ></audio> */}
                                 <form
-                                    id="input"
+                                    id="form"
                                     className="input"
                                     onSubmit={e => {
                                         this.props.sendMassage(e)
                                         var sound = document.getElementById("audio");
-                                        sound.play();
-                                        var form = document.getElementById("input");
+                                        //sound.play();
+                                        var form = document.getElementById("form");
                                         form.reset();
+                                        document.getElementById("input").value = '';
+                                        this.scrollDownWithTimeOut()
                                     }}
                                 >
                                     <input
+                                        id="input"
                                         type="text"
                                         ref="msg"
+                                        autocomplete="off"
                                         onChange={e => {
                                             this.props.updateTypeText(e.target.value);
                                         }}
