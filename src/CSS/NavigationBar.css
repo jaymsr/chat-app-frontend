@@ -41,17 +41,17 @@
   }
   
   .navbar {
-    display: flex;
     height: 8vh;
-    position: sticky;
     padding: 8px 12px;
+    border-width: 0 0 0.5px 0;
+    border-style: solid;
     font-weight: bold;
     font-size: 20px;
-    /* overflow: hidden; */
-    background-color: rgb(182, 220, 241);
-    z-index: 1;
-    align-items: center;
-    justify-content: space-between;
+    overflow: hidden;
+    /* background:linear-gradient(rgba(95, 102, 206, 0.856), transparent);
+    background-color: rgb(17, 6, 116); */
+    background:linear-gradient(rgba(76, 78, 104, 0.856), transparent);
+    background-color: rgb(9, 5, 44);
   }
   
   .navbar a {
@@ -62,3 +62,8 @@
     text-decoration: none;
   }
   
+  .navbar-text {
+    color: rgb(255, 255, 255);
+    text-shadow: lightslategrey;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+  }

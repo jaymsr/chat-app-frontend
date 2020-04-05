@@ -12,8 +12,18 @@ class ChatPanel extends Component {
         };
         this.renderMessage = this.renderMessage.bind(this);
     }
-    componentDidMount() {
-    }
+
+    // scrollToBottom = () => {
+    //     this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+    // }
+      
+    // componentDidMount() {
+    //     this.scrollToBottom();
+    // }
+      
+    // componentDidUpdate() {
+    //     this.scrollToBottom();
+    // }
 
     renderMessage() {
         if (this.props.allMessages['5e89c8271c9d440000f78e42']) {
@@ -36,11 +46,18 @@ class ChatPanel extends Component {
                     <div className="ChatRoom-container">
                         <div className="chat-container" id="scrollc">
                             <div className="chatbox-container">
-                                <div className="group-name"> Group Name </div>
+                                <div className="group-name"> 
+                                    <span class="groupname-text">
+                                        Group Name
+                                    </span>
+                                </div>
                                 <ul className="chats" id="chatInput">
                                     {this.renderMessage()}
                                 </ul>
                                 <audio id="audio" src="https://www.soundjay.com/button/sounds/button-10.mp3" autoplay="false" ></audio>
+                                {/* <div style={{ float:"left", clear: "both" }}
+                                    ref={(el) => { this.messagesEnd = el; }}>
+                                </div> */}
                                 <form
                                     id="input"
                                     className="input"

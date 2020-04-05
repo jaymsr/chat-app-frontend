@@ -118,7 +118,7 @@ class App extends Component {
           <div>
             <NavigationBar
               updateUsername={this.updateUsername}
-              username={this.state.username}
+              user={this.state.user}
               currentGroup={this.state.currentGroup}
               updateCurrentPage={this.updateCurrentPage}
               currentPage={this.state.currentPage}

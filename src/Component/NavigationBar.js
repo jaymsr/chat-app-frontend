@@ -7,9 +7,14 @@ class NavigationBar extends Component {
     return (
       <div>
         <div className="navbar">
-          {/* <div class = "d-flex justify-content-between"> */}
-          <p>SiaTeemo Chat</p>
-          <p>Login as "{this.props.username}" user</p>
+          {/* <p style={{color:"white"}}>SiaTeemo Chat</p>
+          <p>Login as "{this.props.username}" user</p> */}
+          <span class="navbar-text">
+            SiaTeemo Chat
+          </span>
+          <span class="navbar-text">
+            Login as "{this.props.user}"
+          </span>
           {/* <p>Welcome: {this.props.username}</p>
           <p>Group Name: {this.props.currentGroup}</p> */}
           <NavLink to="/">

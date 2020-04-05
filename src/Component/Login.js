@@ -8,7 +8,7 @@ class Login extends Component {
     this.submitHandler = this.submitHandler.bind(this);
   }
   submitHandler(e) {
-    if (this.props.username.trim().length > 0)
+    if (this.props.user.trim().length > 0)
       this.props.updateCurrentPage("Chat");
     else return false;
   }
