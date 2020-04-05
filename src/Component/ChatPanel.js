@@ -13,8 +13,18 @@ class ChatPanel extends Component {
         };
         this.renderMessage = this.renderMessage.bind(this);
     }
-    componentDidMount() {
-    }
+
+    // scrollToBottom = () => {
+    //     this.messagesEnd.scrollIntoView({ behavior: "smooth" });
+    // }
+      
+    // componentDidMount() {
+    //     this.scrollToBottom();
+    // }
+      
+    // componentDidUpdate() {
+    //     this.scrollToBottom();
+    // }
 
     renderMessage() {
         console.log('in')
@@ -48,6 +58,9 @@ class ChatPanel extends Component {
                                     {this.renderMessage()}
                                 </ul>
                                 <audio id="audio" src="https://www.soundjay.com/button/sounds/button-10.mp3" autoplay="false" ></audio>
+                                {/* <div style={{ float:"left", clear: "both" }}
+                                    ref={(el) => { this.messagesEnd = el; }}>
+                                </div> */}
                                 <form
                                     id="input"
                                     className="input"
