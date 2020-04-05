@@ -8,21 +8,6 @@ class GroupList extends Component {
 
   render() {
     return (
-<<<<<<< HEAD
-      <div className="groupList-container">
-          <h1 style={{color: 'white'}}>This is Group Panel</h1>
-          <h1 style={{color: 'white'}}>This is Group Panel</h1>
-          <h1 style={{color: 'white'}}>This is Group Panel</h1>
-          <h1 style={{color: 'white'}}>This is Group Panel</h1>
-          <h1 style={{color: 'white'}}>This is Group Panel</h1>
-||||||| merged common ancestors
-      <div className="groupList-container">
-          <h1>This is Group Panel</h1>
-          <h1>This is Group Panel</h1>
-          <h1>This is Group Panel</h1>
-          <h1>This is Group Panel</h1>
-
-=======
       <div className="groupPanel-container">
         <form
           className="form-inline"
@@ -48,7 +33,6 @@ class GroupList extends Component {
             <i className="fas fa-plus" />
           </button>
         </form>
->>>>>>> ca2fe2a28c7a4205a389052b3f6300b5189de0b2
       </div>
     );
   }

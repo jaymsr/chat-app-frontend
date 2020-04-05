@@ -39,21 +39,11 @@ class ChatPanel extends Component {
                     <div className="ChatRoom-container">
                         <div className="chat-container" id="scrollc">
                             <div className="chatbox-container">
-<<<<<<< HEAD
-                                <h1 style={{color: 'white'}}>this is ChatPanel</h1>
-                                <h1 style={{color: 'white'}}>this is ChatPanel</h1>
-                                <h1 style={{color: 'white'}}>this is ChatPanel</h1>
-                                <h1 style={{color: 'white'}}>this is ChatPanel</h1>
-                                <h1 style={{color: 'white'}}>this is ChatPanel</h1>
-                                <h1 style={{color: 'white'}}>this is ChatPanel</h1>
-||||||| merged common ancestors
-                                <h1>this is ChatPanel</h1>
-                                <h1>this is ChatPanel</h1>
-                                <h1>this is ChatPanel</h1>
-                                <h1>this is ChatPanel</h1>
-
-=======
-                                <div className="group-name"> Group Name </div>
+                                <div className="group-name"> 
+                                    <span class="groupname-text">
+                                        Group Name
+                                    </span>
+                                </div>
                                 <ul className="chats" id="chatInput">
                                     {this.renderMessage()}
                                 </ul>
@@ -87,7 +77,6 @@ class ChatPanel extends Component {
                                         <i className="fa fa-paper-plane" id="plane" aria-hidden="true" />
                                     </button>
                                 </form>
->>>>>>> ca2fe2a28c7a4205a389052b3f6300b5189de0b2
                             </div>
                         </div>
                     </div>
