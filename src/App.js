@@ -13,6 +13,11 @@ class App extends Component {
     this.state = {
       page: "Login",
       user: "",
+      typeText: '',
+      allMessages :
+      {
+        groupA: []
+      },
     };
     // Socket Things --------------------------------
     //
@@ -22,9 +27,13 @@ class App extends Component {
     //
     //
     // End Socket Things ----------------------------
+
     this.SocketEmit = this.SocketEmit.bind(this);
     this.updateUsername = this.updateUsername.bind(this);
     this.updateCurrentPage = this.updateCurrentPage.bind(this);
+    this.updateTypeText = this.updateTypeText.bind(this);
+    this.sendMassage = this.sendMassage.bind(this);
+
   }
 
   SocketEmit(event, value) {
@@ -60,10 +69,43 @@ class App extends Component {
   //
 
   //---------------------ChatPanel------------------------
-  //
-  //
-  //
-  //
+  updateTypeText(value) {
+    this.setState({
+      typeText: value
+    });
+  }
+
+  sendMassage(e) {
+    const self = this;
+    e.preventDefault();
+    console.log('type text')
+    console.log(this.state.typeText)
+    var emitMessage =
+    {
+      user: this.state.user,
+      groupName: this.state.currentGroup,
+      text: this.state.typeText,
+      timeStamp: Date()
+    };
+
+    console.log("message");
+    console.log(message);
+    //this.socket.emit('sendMessage',message);
+    //ReactDOM.findDOMNode(this.state.myRequestedRefsChat.msg).value = "";
+    //----------------------------------------------
+    var message =
+    {
+      user: this.state.user,
+      text: this.state.typeText,
+      timeStamp: Date(),
+    }
+    console.log(self.state)
+    self.state.allMessages['groupA'].push(message)
+    //----------------------------------------------
+
+
+    this.updateTypeText("");
+  }
 
 
 
@@ -92,15 +134,11 @@ class App extends Component {
               SocketEmit={this.SocketEmit}
             />
             <ChatPanel
-              username={this.state.username}
-              currentGroup={this.state.currentGroup}
-              isJoinGroupList={this.state.isJoinGroupList}
-              groupList={this.state.groupList}
-              allChats={this.state.allChats}
+              user={this.state.user}
               typeText={this.state.typeText}
-              submitMessage={this.submitMessage}
-              userInput={this.userInput}
-              passRefUpwardChat={this.getRefsFromChildChat}
+              updateTypeText={this.updateTypeText}
+              sendMassage={this.sendMassage}
+              allMessages={this.state.allMessages}
             />
           </div>
         ) : this.state.page === "Login" ? (
