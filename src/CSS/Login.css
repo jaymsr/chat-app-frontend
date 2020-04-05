@@ -1,29 +1,44 @@
 .Login-Page {
     text-align: center;
-    background-color: #ffffff;
+    /* background-color: #ffffff; */
+    /* background:linear-gradient(rgba(47, 77, 245, 0.5), transparent);
+    background-color: rgb(194, 229, 238); */
+    background-image: url(http://24.media.tumblr.com/dd44c0fd9446c0fc9dfa02059d3ced37/tumblr_mvqgsaLwG31s8b7jbo1_1280.gif);
+    background-repeat: repeat;
     height: 100vh;
   }
   
   .Field-Container {
     font-family: "Baloo Chettan", cursive;
     padding: 25px;
-    width: 400px;
+    width: 600px;
     height: 40vh;
-    border: #000000 solid 2px;
-    border-radius: 1rem;
-    background-color: #999999;
+    /* border: #4d4d4d solid 1px; */
+    box-shadow: 3px 3px 3px rgb(59, 59, 59);
+    /* border-radius: 1rem; */
+    background:linear-gradient(rgba(246, 255, 163, 0.856), transparent);
+    background-color: #ffffff;
     margin-top: 30vh;
     display: inline-block;
     text-align: center;
   }
   
   .enterText {
-    margin-top: 10px;
+    font-family: "Gill Sans", sans-serif;
+    margin-top: 30px;
   }
   
   .blankAlert {
-    font-family: "Quicksan";
+    font-family: "Gill Sans", sans-serif;
     text-align: left;
     color: red;
+    margin-top: 1vh;
+  }
+
+  .enterSubmit {
+    font-family: "Gill Sans", sans-serif;
+    text-align: left;
+    color: rgb(12, 136, 54);
+    margin-top: 1vh;
   }
   

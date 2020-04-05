@@ -41,10 +41,17 @@
   }
   
   .navbar {
-    height: 10vh;
-    padding-top: 25px;
-    overflow: hidden;
+    display: flex;
+    height: 8vh;
+    position: sticky;
+    padding: 8px 12px;
+    font-weight: bold;
+    font-size: 20px;
+    /* overflow: hidden; */
     background-color: rgb(182, 220, 241);
+    z-index: 1;
+    align-items: center;
+    justify-content: space-between;
   }
   
   .navbar a {

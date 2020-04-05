@@ -19,7 +19,7 @@ class ChatPanel extends Component {
     renderMessage() {
         console.log('in')
         return (
-            this.state.allMessages['groupA'].map((message,key) => {
+            this.state.allMessages['groupA'].map((message, key) => {
                 console.log('rendermsg')
                 console.log(message)
                 console.log('rendermsg end')
@@ -30,6 +30,7 @@ class ChatPanel extends Component {
         )
     }
 
+
     render() {
         return this.state.isLogout ? (
             <App />
@@ -38,14 +39,21 @@ class ChatPanel extends Component {
                     <div className="ChatRoom-container">
                         <div className="chat-container" id="scrollc">
                             <div className="chatbox-container">
+                                <div className="group-name"> Group Name </div>
                                 <ul className="chats" id="chatInput">
                                     {this.renderMessage()}
                                 </ul>
+                                <audio id="audio" src="https://www.soundjay.com/button/sounds/button-10.mp3" autoplay="false" ></audio>
                                 <form
+                                    id="input"
                                     className="input"
                                     onSubmit={e => {
                                         this.props.sendMassage(e)
                                         console.log('e')
+                                        var sound = document.getElementById("audio");
+                                        sound.play();
+                                        var form = document.getElementById("input");
+                                        form.reset();
                                     }}
                                 >
                                     <input

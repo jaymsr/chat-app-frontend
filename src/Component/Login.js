@@ -20,24 +20,33 @@ class Login extends Component {
     return (
       <div className="Login-Page">
         <div className="Field-Container">
-          <h1 className="enterText">Enter Your Name</h1>
+          <h1 className="enterText">LOGIN</h1>
+          <h3>SiaTeemo Chat</h3>
           <br />
           <form onSubmit={this.submitHandler}>
             <input
               type="text"
               className="form-control"
-              placeholder="Enter name here ..."
+              placeholder="Enter your name"
               id="nameField"
               onChange={e => {
                 this.props.updateUsername(e.target.value);
+              }}
+              onKeyPress={e => {
+                if (e.key === 'Enter' && this.props.user.trim().length > 0) {
+                  this.props.updateCurrentPage("Chat");
+                  console.log(this.props.user)
+                  this.props.SocketEmit('enter', this.props.user)
+                }
               }}
             />
           </form>
 
           {this.props.user.trim().length > 0 ? (
-            <br />
+            <pre className="enterSubmit"> Press ENTER to login.</pre>
+            // <br />
           ) : (
-              <pre className="blankAlert"> Please fill out this field.</pre>
+              <pre className="blankAlert"> Please enter your name.</pre>
             )}
 
           <div>

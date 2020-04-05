@@ -43,6 +43,7 @@ class App extends Component {
   }
 
   //--------------------Login-----------------------
+  
   updateUsername(value) {
     this.setState({
       user: value
@@ -101,6 +102,7 @@ class App extends Component {
     }
     console.log(self.state)
     self.state.allMessages['groupA'].push(message)
+
     //----------------------------------------------
 
 
@@ -122,16 +124,16 @@ class App extends Component {
               currentPage={this.state.currentPage}
             />
             <GroupPanel
-              updateCurrentGroup={this.updateCurrentGroup}
-              currentGroup={this.state.currentGroup}
-              username={this.state.username}
-              createGroup={this.createGroup}
-              isJoinGroupList={this.state.isJoinGroupList}
-              groupList={this.state.groupList}
-              onAddItem={this.onAddItem}
-              passRefUpward={this.getRefsFromChild}
-              updateIsJoinGroupList={this.updateIsJoinGroupList}
-              SocketEmit={this.SocketEmit}
+              // updateCurrentGroup={this.updateCurrentGroup}
+              // currentGroup={this.state.currentGroup}
+              // username={this.state.username}
+              // createGroup={this.createGroup}
+              // isJoinGroupList={this.state.isJoinGroupList}
+              // groupList={this.state.groupList}
+              // onAddItem={this.onAddItem}
+              // passRefUpward={this.getRefsFromChild}
+              // updateIsJoinGroupList={this.updateIsJoinGroupList}
+              // SocketEmit={this.SocketEmit}
             />
             <ChatPanel
               user={this.state.user}
