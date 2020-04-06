@@ -64,14 +64,14 @@ class ChatPanel extends Component {
                                 <ul className="chats" id="chatInput">
                                     {this.renderMessage()}
                                 </ul>
-                                {/* <audio id="audio" src="https://www.soundjay.com/button/sounds/button-10.mp3" autoplay="false" ></audio> */}
+                                <audio id="audio" src="https://www.soundjay.com/button/sounds/button-10.mp3" autoplay="false" ></audio>
                                 <form
                                     id="form"
                                     className="input"
                                     onSubmit={e => {
                                         this.props.sendMassage(e)
                                         var sound = document.getElementById("audio");
-                                        //sound.play();
+                                        sound.play();
                                         var form = document.getElementById("form");
                                         form.reset();
                                         document.getElementById("input").value = '';
@@ -92,7 +92,7 @@ class ChatPanel extends Component {
                                         value="Submit"
                                         className="btn btn-primary"
                                         id="submitButton"
-                                        disabled={!this.props.typeText.trim().length > 0}
+                                        disabled={!this.props.typeText.trim().length > 0 || !this.props.isJoinGroupList.includes(this.props.currentGroup)}
                                     >
                                         <i className="fa fa-paper-plane" id="plane" aria-hidden="true" />
                                     </button>
