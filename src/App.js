@@ -81,7 +81,7 @@ class App extends Component {
     });
   }
   onAddItem() {
-    this.socket.emit('new-group', { username: this.state.username, groupname: this.state.myRequestedRefs.groupName.value })
+    this.socket.emit('new-group', { username: this.state.username, groupName: this.state.myRequestedRefs.groupName.value })
     this.state.myRequestedRefs.groupForm.reset();
   }
   createGroup(e) {

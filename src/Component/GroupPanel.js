@@ -13,7 +13,7 @@ class GroupList extends Component {
   }
 
   render() {
-    console.log(this.refs.groupName)
+
     return (
       <div className="groupPanel-container">
         <form
