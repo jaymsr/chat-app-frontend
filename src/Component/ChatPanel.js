@@ -64,7 +64,7 @@ class ChatPanel extends Component {
                                 <div className="group-name">
 
                                     {this.props.currentGroup === "Not in group." ? (
-                                        <span class="groupname-text"> {this.props.currentGroup} </span> 
+                                        <span class="groupname-text"> {this.props.currentGroup} </span>
                                     ) : (
                                         <span class="groupname-text"> {this.props.allGroup[this.props.currentGroup]} </span>
                                         )}
