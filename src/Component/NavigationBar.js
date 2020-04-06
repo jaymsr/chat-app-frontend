@@ -13,7 +13,7 @@ class NavigationBar extends Component {
             SiaTeemo Chat
           </span>
           <span class="navbar-text">
-            Login as "{this.props.user}"
+            Login as "{this.props.username}"
           </span>
           {/* <p>Welcome: {this.props.username}</p>
           <p>Group Name: {this.props.currentGroup}</p> */}

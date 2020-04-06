@@ -21,7 +21,9 @@ class App extends Component {
       allGroup: [],
       myRequestedRefs: 'empty',
     };
+
     // Socket Things --------------------------------
+
     this.socket = openSocket('http://localhost:8000');
     console.log('open socket...')
     const me = this;
@@ -78,6 +80,7 @@ class App extends Component {
   }
 
   //------------------GroupList---------------------
+
   updateCurrentGroup(value) {
     this.setState({ currentGroup: value }, () => {
       console.log('click group')
@@ -102,11 +105,13 @@ class App extends Component {
   }
 
   //------ north add ja -----//
+
   updateIsJoinGroupList(newList) {
     this.setState({ isJoinGroupList: newList });
   }
 
   //---------------------ChatPanel------------------------
+
   updateTypeText(value) {
     this.setState({
       typeText: value
@@ -130,6 +135,7 @@ class App extends Component {
     console.log("message");
     console.log(emitMessage);
     this.socket.emit('send-message', emitMessage);
+    
     //ReactDOM.findDOMNode(this.state.myRequestedRefsChat.msg).value = "";
     //----------------------------------------------
     // var message =
@@ -155,7 +161,7 @@ class App extends Component {
           <div>
             <NavigationBar
               updateUsername={this.updateUsername}
-              user={this.state.user}
+              username={this.state.username}
               currentGroup={this.state.currentGroup}
               updateCurrentPage={this.updateCurrentPage}
               currentPage={this.state.currentPage}
