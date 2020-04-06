@@ -15,8 +15,11 @@ class App extends Component {
       page: "Login",
       username: "",
       typeText: '',
+      currentGroup: "Not in group.",
+      isJoinGroupList: [], // [true, false, true]
       allMessages: {},
       allGroup: [],
+      myRequestedRefs: 'empty',
     };
     // Socket Things --------------------------------
     this.socket = openSocket('http://localhost:8000');
@@ -25,16 +28,21 @@ class App extends Component {
 
     this.socket.on('all-group', function (data) {
       me.setState({ allGroup: data })
+      console.log('all group...')
+      console.log(me.state)
     })
-    
+
     this.socket.on('join-group', function (data) {
       me.setState({ isJoinGroupList: data })
+      console.log('join group...')
+      console.log(me.state)
     })
 
     this.socket.on('all-chat', function (data) {
       me.setState({ allMessages: data })
+      console.log('all chat...')
+      console.log(me.state)
     })
-
 
     // End Socket Things ----------------------------
 
@@ -48,6 +56,7 @@ class App extends Component {
     this.sendMassage = this.sendMassage.bind(this);
     this.getRefsFromChild = this.getRefsFromChild.bind(this);
     this.updateIsJoinGroupList = this.updateIsJoinGroupList.bind(this);
+    this.onAddItem = this.onAddItem.bind(this);
 
   }
 
@@ -70,12 +79,13 @@ class App extends Component {
 
   //------------------GroupList---------------------
   updateCurrentGroup(value) {
-    this.setState({
-      currentGroup: value
-    });
+    this.setState({ currentGroup: value }, () => {
+      console.log('click group')
+      console.log(this.state.currentGroup)
+    })
   }
   onAddItem() {
-    this.socket.emit('new-group', { username: this.state.username, groupname: this.state.myRequestedRefs.groupName.value })
+    this.socket.emit('new-group', { username: this.state.username, groupName: this.state.myRequestedRefs.groupName.value })
     this.state.myRequestedRefs.groupForm.reset();
   }
   createGroup(e) {
@@ -112,7 +122,7 @@ class App extends Component {
     var emitMessage =
     {
       username: this.state.username,
-      groupId: '5e89cb511c9d440000f78e43',
+      groupId: this.state.currentGroup,
       text: this.state.typeText,
       timestamp: formatted_date
     };
@@ -138,6 +148,7 @@ class App extends Component {
 
 
   render() {
+    // console.log(this.state.myRequestedRefs.groupName)
     return (
       <div>
         {this.state.page === "Chat" ? (
@@ -167,7 +178,8 @@ class App extends Component {
               updateTypeText={this.updateTypeText}
               sendMassage={this.sendMassage}
               allMessages={this.state.allMessages}
-              currentGroup='5e89cb511c9d440000f78e43'
+              currentGroup={this.state.currentGroup}
+              isJoinGroupList={this.state.isJoinGroupList}
             />
           </div>
         ) : this.state.page === "Login" ? (

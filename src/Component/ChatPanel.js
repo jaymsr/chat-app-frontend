@@ -27,13 +27,23 @@ class ChatPanel extends Component {
     }
 
     renderMessage() {
-        if (this.props.allMessages[this.props.currentGroup]) {
+        if (this.props.allMessages[this.props.currentGroup] && this.props.isJoinGroupList.includes(this.props.currentGroup)) {
             return (
                 this.props.allMessages[this.props.currentGroup].map((message, key) => {
                     return (
                         <Message message={message} username={this.state.username} />
                     )
                 })
+            )
+        }
+        else {
+            return (
+                <div>
+                    <div style={{ color: '#DFDFDF', marginLeft: '410px', marginTop: '210px' }}>
+                        <i class="far fa-sad-tear fa-10x"></i>
+                    </div>
+                    <div style={{ color: '#DFDFDF', textAlign:"center", fontSize:'30px'}}>Click Join Group to See The Messages...</div>
+                </div>
             )
         }
     }
