@@ -1,10 +1,12 @@
 .groupPanel-container {
     width: 32%;
     float: left;
+    text-align: center;
   }
   
   .form-group {
     width: calc(100% - 38px);
+    margin-top: 5px;
   }
   
   .addLabel {
@@ -13,14 +15,14 @@
   
   #groupItem {
     width: 100%;
-    padding: 5px;
-    border-top-right-radius: 0rem;
-    border-bottom-right-radius: 0rem;
   }
   #addButton {
-    border-top-left-radius: 0rem;
-    border-bottom-left-radius: 0rem;
     width: 38px;
+    height: 30px;
+    margin-top: 5px;
+  }
+  #addButton:hover{
+    background: #1143CB;
   }
   #StatusButton {
     width: 66px;
@@ -30,45 +32,36 @@
     height: 49px;
     float: left;
     width: calc(100% - 66px);
-    border-top-left-radius: 0.25rem;
-    border-bottom-left-radius: 0.25rem;
-    border-top-right-radius: 0rem;
-    border-bottom-right-radius: 0rem;
   }
   
-  .leave {
+  .Leave {
     width: 66px;
     height: 49px;
     float: right;
     background-color: #fd5757;
-    border-radius: 15%;
     color:white;
     font-weight: bold;
   }
-  .leave:hover {
+  .Leave:hover {
     background-color: #c11f2a;
   }
-  .join {
+  .Join {
     width: 66px;
     height: 49px;
     float: right;
     background-color: #3dc63b;
-    border-radius: 15%;
     color:white;
     font-weight: bold;
   }
-  .join:hover {
+  .Join:hover {
     background-color: #217020;
   }
   #eachGroupItem:hover {
-    background: #0fc5f3;
-    color: #fff;
+    background: #69CDE0;
   }
   
   .btn-sm {
     width: 30%;
-    height: 38px;
-    padding: 10px;
-    
+    height: 38px;   
   }
   
