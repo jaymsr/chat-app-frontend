@@ -27,9 +27,9 @@ class ChatPanel extends Component {
     }
 
     renderMessage() {
-        if (this.props.allMessages['5e89c8271c9d440000f78e42']) {
+        if (this.props.allMessages[this.props.currentGroup]) {
             return (
-                this.props.allMessages['5e89c8271c9d440000f78e42'].map((message, key) => {
+                this.props.allMessages[this.props.currentGroup].map((message, key) => {
                     return (
                         <Message message={message} username={this.state.username} />
                     )
