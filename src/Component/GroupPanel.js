@@ -13,7 +13,7 @@ class GroupList extends Component {
   }
 
   render() {
-    console.log(this.props.allGroup)
+    console.log(this.refs.groupName)
     return (
       <div className="groupPanel-container">
         <form
@@ -37,6 +37,9 @@ class GroupList extends Component {
             type="submit"
             id="addButton"
             className="btn btn-primary btn-sm"
+            onClick={e => { 
+              this.props.createGroup(e) 
+            }}
           >
             <i className="fas fa-plus" />
           </button>

@@ -15,16 +15,11 @@ class App extends Component {
       page: "Login",
       username: "",
       typeText: '',
-<<<<<<< HEAD
       currentGroup: "Not in group.",
       isJoinGroupList: [], // [true, false, true]
       allMessages: {},
-||||||| merged common ancestors
-      allMessages :{},
-=======
-      allMessages: {},
->>>>>>> 93c6350c41175d1345b52105a7d50662046dc3fd
       allGroup: [],
+      myRequestedRefs: 'empty',
     };
     // Socket Things --------------------------------
     this.socket = openSocket('http://localhost:8000');
@@ -35,7 +30,6 @@ class App extends Component {
       me.setState({ allGroup: data })
     })
 
-<<<<<<< HEAD
     
     this.socket.on('join-group', function (data) {
       me.setState({ isJoinGroupList: data })
@@ -43,21 +37,10 @@ class App extends Component {
 
     this.socket.on('all-chat', function (data) {
       me.setState({ allMessages: data })
-    })
-
-||||||| merged common ancestors
-    this.socket.on('all-chat',function(data) {
-      me.setState({allMessages:data})
-    })
-    
-=======
-    this.socket.on('all-chat', function (data) {
-      me.setState({ allMessages: data })
       console.log('all-chat...')
       console.log(me.state)
     })
 
->>>>>>> 93c6350c41175d1345b52105a7d50662046dc3fd
     // End Socket Things ----------------------------
 
     this.SocketEmit = this.SocketEmit.bind(this);
@@ -70,6 +53,7 @@ class App extends Component {
     this.sendMassage = this.sendMassage.bind(this);
     this.getRefsFromChild = this.getRefsFromChild.bind(this);
     this.updateIsJoinGroupList = this.updateIsJoinGroupList.bind(this);
+    this.onAddItem = this.onAddItem.bind(this);
 
   }
 
@@ -160,6 +144,7 @@ class App extends Component {
 
 
   render() {
+    // console.log(this.state.myRequestedRefs.groupName)
     return (
       <div>
         {this.state.page === "Chat" ? (
@@ -172,7 +157,6 @@ class App extends Component {
               currentPage={this.state.currentPage}
             />
             <GroupPanel
-<<<<<<< HEAD
               updateCurrentGroup={this.updateCurrentGroup}
               currentGroup={this.state.currentGroup}
               username={this.state.username}
@@ -183,29 +167,6 @@ class App extends Component {
               passRefUpward={this.getRefsFromChild}
               updateIsJoinGroupList={this.updateIsJoinGroupList}
               SocketEmit={this.SocketEmit}
-||||||| merged common ancestors
-              // updateCurrentGroup={this.updateCurrentGroup}
-              // currentGroup={this.state.currentGroup}
-              // username={this.state.username}
-              // createGroup={this.createGroup}
-              // isJoinGroupList={this.state.isJoinGroupList}
-              // groupList={this.state.groupList}
-              // onAddItem={this.onAddItem}
-              // passRefUpward={this.getRefsFromChild}
-              // updateIsJoinGroupList={this.updateIsJoinGroupList}
-              // SocketEmit={this.SocketEmit}
-=======
-            // updateCurrentGroup={this.updateCurrentGroup}
-            // currentGroup={this.state.currentGroup}
-            // username={this.state.username}
-            // createGroup={this.createGroup}
-            // isJoinGroupList={this.state.isJoinGroupList}
-            // groupList={this.state.groupList}
-            // onAddItem={this.onAddItem}
-            // passRefUpward={this.getRefsFromChild}
-            // updateIsJoinGroupList={this.updateIsJoinGroupList}
-            // SocketEmit={this.SocketEmit}
->>>>>>> 93c6350c41175d1345b52105a7d50662046dc3fd
             />
             <ChatPanel
               username={this.state.username}
