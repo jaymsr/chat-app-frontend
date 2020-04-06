@@ -164,6 +164,7 @@ class App extends Component {
               currentGroup={this.state.currentGroup}
               updateCurrentPage={this.updateCurrentPage}
               currentPage={this.state.currentPage}
+              updateCurrentGroup={this.updateCurrentGroup}
             />
             <GroupPanel
               updateCurrentGroup={this.updateCurrentGroup}

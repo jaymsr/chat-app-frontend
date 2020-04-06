@@ -24,7 +24,7 @@ class Login extends Component {
       <div className="Login-Page">
         <div className="Field-Container">
           <h1 className="enterText">LOGIN</h1>
-          <h3>SiaTeemo Chat</h3>
+          <h3>Lächeln Chat</h3>
           <br />
           <form onSubmit={this.submitHandler}>
             <input
