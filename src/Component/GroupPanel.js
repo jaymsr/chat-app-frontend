@@ -13,7 +13,7 @@ class GroupList extends Component {
   }
 
   render() {
-
+    console.log(this.props.allGroup)
     return (
       <div className="groupPanel-container">
         <form
