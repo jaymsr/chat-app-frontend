@@ -8,7 +8,8 @@ class ChatPanel extends Component {
         super(props);
         this.state = {
             username: this.props.username,
-            isLogout: false
+            isLogout: false,
+            oldPage: ''
         };
         this.renderMessage = this.renderMessage.bind(this);
         var scrolled = false;
@@ -19,14 +20,18 @@ class ChatPanel extends Component {
         objDiv.scrollTop = objDiv.scrollHeight;
     }
 
-    scrollDownWithTimeOut() {
-        setTimeout(this.scrollDown, 200);
+    scrollDownWithTimeOut(time) {
+        setTimeout(this.scrollDown, time);
     }
 
     componentDidMount() {
     }
 
     renderMessage() {
+        if (this.state.oldPage!=this.props.currentGroup){
+            this.scrollDownWithTimeOut(0)
+            this.state.oldPage=this.props.currentGroup
+        }
         if (this.props.allMessages[this.props.currentGroup] && this.props.isJoinGroupList.includes(this.props.currentGroup)) {
             return (
                 this.props.allMessages[this.props.currentGroup].map((message, key) => {
@@ -79,7 +84,7 @@ class ChatPanel extends Component {
                                         var form = document.getElementById("form");
                                         form.reset();
                                         document.getElementById("input").value = '';
-                                        this.scrollDownWithTimeOut()
+                                        this.scrollDownWithTimeOut(200)
                                     }}
                                 >
                                     <input
