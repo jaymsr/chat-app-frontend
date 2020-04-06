@@ -13,7 +13,7 @@ class Login extends Component {
       this.props.updateCurrentPage("Chat");
     else return false;
   }
-  
+
   /** ****Notes***** If account name exist and no-one login with that account. -- Get stage from --
    * If account name not exist in DB --Create new isJoinGroupList with all element false. --
    * If account name exist but someone login with that name -- Reject new login with that name. --

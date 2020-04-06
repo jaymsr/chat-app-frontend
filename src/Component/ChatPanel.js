@@ -63,7 +63,7 @@ class ChatPanel extends Component {
                             <div className="chatbox-container">
                                 <div className="group-name">
                                     <span class="groupname-text">
-                                        Group Name
+                                        Group Name {this.props.currentGroup}
                                     </span>
                                 </div>
                                 <ul className="chats" id="chatInput">
