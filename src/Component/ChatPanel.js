@@ -73,20 +73,19 @@ class ChatPanel extends Component {
                                 <ul className="chats" id="chatInput">
                                     {this.renderMessage()}
                                 </ul>
-                                <audio id="audio" src="https://www.soundjay.com/button/sounds/button-10.mp3" autoplay="false" ></audio>
+            
                                 <form
                                     id="form"
                                     className="input"
                                     onSubmit={e => {
                                         this.props.sendMassage(e)
-                                        var sound = document.getElementById("audio");
-                                        sound.play();
                                         var form = document.getElementById("form");
                                         form.reset();
                                         document.getElementById("input").value = '';
                                         this.scrollDownWithTimeOut(200)
                                     }}
                                 >
+                                    
                                     <input
                                         id="input"
                                         type="text"
