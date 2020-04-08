@@ -99,7 +99,7 @@ class ChatPanel extends Component {
                                         id="submitButton"
                                         disabled={!this.props.typeText.trim().length > 0 || !this.props.isJoinGroupList.includes(this.props.currentGroup)}
                                     >
-                                        <i className="fa fa-paper-plane" id="plane" aria-hidden="true" />
+                                        <i class="fas fa-location-arrow" id="plane" aria-hidden="true" />
                                     </button>
                                 </form>
                             </div>
