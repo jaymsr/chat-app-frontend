@@ -1,12 +1,15 @@
 .groupPanel-container {
+    height: 92vh;
     width: 32%;
     float: left;
     text-align: center;
+    background: linear-gradient(rgba(194, 197, 235, 0.856), transparent);
+    background-color: rgb(22, 21, 51);
   }
   
   .form-group {
     width: calc(100% - 38px);
-    margin-top: 5px;
+    margin-top: 9px;
   }
   
   .addLabel {
@@ -19,7 +22,7 @@
   #addButton {
     width: 38px;
     height: 30px;
-    margin-top: 5px;
+    margin-top: 9px;
   }
   #addButton:hover{
     background: #1143CB;
@@ -64,4 +67,3 @@
     width: 30%;
     height: 38px;   
   }
-  
