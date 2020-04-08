@@ -35,7 +35,7 @@ class GroupList extends Component {
           <button
             type="submit"
             id="addButton"
-            className="btn btn-primary btn-sm"
+            className="btn btn-dark btn-sm"
             onClick={e => {
               this.props.createGroup(e)
             }}
