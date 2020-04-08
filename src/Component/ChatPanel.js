@@ -47,7 +47,7 @@ class ChatPanel extends Component {
                     <div style={{ color: '#DFDFDF', marginLeft: '410px', marginTop: '210px' }}>
                         <i class="far fa-sad-tear fa-10x"></i>
                     </div>
-                    <div style={{ color: '#DFDFDF', textAlign:"center", fontSize:'30px'}}>Click Join Group to See The Messages...</div>
+                    <div style={{ color: '#DFDFDF', textAlign:"center", fontSize:'30px'}}>Click Join Group to See the Messages...</div>
                 </div>
             )
         }
@@ -62,27 +62,30 @@ class ChatPanel extends Component {
                         <div className="chat-container" id="scrollc">
                             <div className="chatbox-container">
                                 <div className="group-name">
-                                    <span class="groupname-text">
-                                        Group Name {this.props.currentGroup}
-                                    </span>
+
+                                    {this.props.currentGroup === "Not in group." ? (
+                                        <span class="groupname-text"> {this.props.currentGroup} </span>
+                                    ) : (
+                                        <span class="groupname-text"> {this.props.allGroup[this.props.currentGroup]} </span>
+                                        )}
+
                                 </div>
                                 <ul className="chats" id="chatInput">
                                     {this.renderMessage()}
                                 </ul>
-                                <audio id="audio" src="https://www.soundjay.com/button/sounds/button-10.mp3" autoplay="false" ></audio>
+            
                                 <form
                                     id="form"
                                     className="input"
                                     onSubmit={e => {
                                         this.props.sendMassage(e)
-                                        var sound = document.getElementById("audio");
-                                        sound.play();
                                         var form = document.getElementById("form");
                                         form.reset();
                                         document.getElementById("input").value = '';
                                         this.scrollDownWithTimeOut(200)
                                     }}
                                 >
+                                    
                                     <input
                                         id="input"
                                         type="text"

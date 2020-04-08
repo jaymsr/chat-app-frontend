@@ -13,7 +13,6 @@ class GroupList extends Component {
   }
 
   render() {
-
     return (
       <div className="groupPanel-container">
         <form
@@ -36,16 +35,16 @@ class GroupList extends Component {
           <button
             type="submit"
             id="addButton"
-            className="btn btn-primary btn-sm"
-            onClick={e => { 
-              this.props.createGroup(e) 
+            className="btn btn-dark btn-sm"
+            onClick={e => {
+              this.props.createGroup(e)
             }}
           >
             <i className="fas fa-plus" />
           </button>
         </form>
 
-        <ul className="list-group">
+        <ul className="list-group" style={{ marginTop: "20px" }}>
           {Object.keys(this.props.allGroup).map(function (key, value) {
             return (
               <div key={key}>
@@ -56,22 +55,22 @@ class GroupList extends Component {
                     this.props.updateCurrentGroup(key);
                   }}
                 >
-                  {this.props.allGroup[key]}{this.checkJoinStatus(key, ' (Joined)', ' (Not-Join)')}
+                  {this.props.allGroup[key]}{this.checkJoinStatus(key, ' (MEMBER)', ' (NON-MEMBER)')}
                 </li>
                 <button
                   type="submit"
-                  className={this.checkJoinStatus(key, 'leave', 'join')}
-                  value={this.checkJoinStatus(key, 'leave', 'join') + '_' + key}
+                  className={this.checkJoinStatus(key, 'Leave', 'Join')}
+                  value={this.checkJoinStatus(key, 'Leave', 'Join') + '_' + key}
                   onClick={e => {
                     var tmp = e.target.value.split("_");
-                    if (tmp[0] === "leave") {
+                    if (tmp[0] === "Leave") {
                       this.props.SocketEmit('leave-group', { username: this.props.username, groupId: tmp[1] })
-                    } else if (tmp[0] === "join") {
+                    } else if (tmp[0] === "Join") {
                       this.props.SocketEmit('join-group', { groupId: tmp[1], username: this.props.username })
                     }
                   }}
                 >
-                  {this.checkJoinStatus(key, 'leave', 'join')}
+                  {this.checkJoinStatus(key, 'Leave', 'Join')}
                 </button>
               </div>
             );

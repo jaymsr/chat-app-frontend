@@ -7,21 +7,18 @@ class NavigationBar extends Component {
     return (
       <div>
         <div className="navbar">
-          {/* <p style={{color:"white"}}>SiaTeemo Chat</p>
-          <p>Login as "{this.props.username}" user</p> */}
           <span class="navbar-text">
-            SiaTeemo Chat
+            Lächeln Chat
           </span>
           <span class="navbar-text">
-            Login as "{this.props.username}"
+            Login as {this.props.username}
           </span>
-          {/* <p>Welcome: {this.props.username}</p>
-          <p>Group Name: {this.props.currentGroup}</p> */}
           <NavLink to="/">
             <button className="btn btn-danger"
               onClick={e => {
                 this.props.updateUsername("");
                 this.props.updateCurrentPage("Login");
+                this.props.updateCurrentGroup("Not in group.");
               }}
             >
               Logout

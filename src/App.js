@@ -59,7 +59,6 @@ class App extends Component {
     this.getRefsFromChild = this.getRefsFromChild.bind(this);
     this.updateIsJoinGroupList = this.updateIsJoinGroupList.bind(this);
     this.onAddItem = this.onAddItem.bind(this);
-
   }
 
   SocketEmit(event, value) {
@@ -165,6 +164,7 @@ class App extends Component {
               currentGroup={this.state.currentGroup}
               updateCurrentPage={this.updateCurrentPage}
               currentPage={this.state.currentPage}
+              updateCurrentGroup={this.updateCurrentGroup}
             />
             <GroupPanel
               updateCurrentGroup={this.updateCurrentGroup}
@@ -186,6 +186,7 @@ class App extends Component {
               allMessages={this.state.allMessages}
               currentGroup={this.state.currentGroup}
               isJoinGroupList={this.state.isJoinGroupList}
+              allGroup={this.state.allGroup}
             />
           </div>
         ) : this.state.page === "Login" ? (
