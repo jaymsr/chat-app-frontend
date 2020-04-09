@@ -48,8 +48,6 @@
     font-weight: bold;
     font-size: 20px;
     overflow: hidden;
-    /* background:linear-gradient(rgba(95, 102, 206, 0.856), transparent);
-    background-color: rgb(17, 6, 116); */
     background:linear-gradient(rgba(76, 78, 104, 0.856), transparent);
     background-color: rgb(9, 5, 44);
   }

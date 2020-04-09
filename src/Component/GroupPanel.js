@@ -65,6 +65,7 @@ class GroupList extends Component {
                     var tmp = e.target.value.split("_");
                     if (tmp[0] === "Leave") {
                       this.props.SocketEmit('leave-group', { username: this.props.username, groupId: tmp[1] })
+                      this.props.updateCurrentGroup("Not in group.");
                     } else if (tmp[0] === "Join") {
                       this.props.SocketEmit('join-group', { groupId: tmp[1], username: this.props.username })
                     }
